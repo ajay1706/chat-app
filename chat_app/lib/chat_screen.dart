@@ -19,13 +19,26 @@ void _handleSubmitted(String text){
   Widget _textComposerWidget(){
     return Container(  
       margin: EdgeInsets.symmetric(horizontal: 8.0),
-      child: TextField(
+      child: Row(
+        children: <Widget>[
+          Flexible(
+            child: TextField(
         decoration: InputDecoration.collapsed(
           hintText: "Send a message"
         ),
         controller: _textController,
         onSubmitted: _handleSubmitted,
       ),
+       ),
+       Container(
+         margin: EdgeInsets.symmetric(horizontal: 4.0),
+         child: IconButton(
+           icon: Icon(Icons.send),
+           onPressed: ()=> _handleSubmitted(_textController.text),
+         ),
+       )
+        ],
+      )
     );
   }
 
